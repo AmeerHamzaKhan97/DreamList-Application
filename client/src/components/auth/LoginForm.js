@@ -7,7 +7,7 @@ import {
   useHistory,
 } from "react-router-dom";
 import { useFormik, Form, FormikProvider } from "formik";
-import { Icon } from "@iconify/react";
+
 // import eyeFill from "@iconify/icons-eva/eye-fill";
 // import eyeOffFill from "@iconify/icons-eva/eye-off-fill";
 // import { useSelector, useDispatch } from "react-redux";
@@ -184,14 +184,6 @@ export default function LoginForm() {
             }}
             error={Boolean(touched.password && errors.password)}
             helperText={touched.password && errors.password}
-          />
-          <Icon
-            icon="ri:add-circle-line"
-            style={{
-              fontSize: "100px",
-              cursor: "pointer",
-            }}
-            onClick={() => console.log("working...")}
           />
         </Form>
         <Button
