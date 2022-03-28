@@ -1,6 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react";
+
 function HomePage() {
+  const navigate = useNavigate();
   return (
     <>
       <Icon />
@@ -14,7 +17,7 @@ function HomePage() {
           right: "25px",
           bottom: "40px",
         }}
-        onClick={() => console.log("working...")}
+        onClick={() => navigate("/add")}
       />
     </>
   );
