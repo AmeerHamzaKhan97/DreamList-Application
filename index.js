@@ -1,5 +1,6 @@
 const express = require("express");
 const userModel = require("./models/UserModel");
+const dreamModel = require("./models/DreamModel");
 const bcrypt = require("bcrypt");
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
@@ -9,6 +10,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+//signup
 app.post("/api/v1/signUp", async (req, res) => {
   console.log(req.body);
   console.log(req.body.email);
@@ -56,10 +58,6 @@ app.post("/api/v1/signUp", async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error.message, response: "error" });
   }
-});
-
-app.listen(PORT, function () {
-  console.log(`App listening at http://localhost:${PORT}`);
 });
 
 //login
@@ -116,4 +114,39 @@ app.post("/api/v1/login", async (req, res) => {
   } catch (error) {
     res.json({ error: error.message, status: "500", response: "error" });
   }
+});
+
+app.post("/api/v1/addDream", async (req, res) => {
+  // console.log("hit");
+  // console.log(req.body);
+  const { type, dream, date } = req.body;
+  try {
+    if (!type && !dream && !date) {
+      res.json({ msg: "Fill all the fields please" });
+      return;
+    }
+
+    const newDreamList = await new dreamModel({
+      dream_type: type,
+      dream: dream,
+      date_to_complete: date,
+    });
+    await newDreamList.save();
+    res.status(200).json({ msg: "new Dream Addded" });
+  } catch (error) {
+    res.json({ error: error.message });
+  }
+});
+
+app.get("/api/v1/dreamlist", async (req, res) => {
+  try {
+    const list = await dreamModel.find();
+    res.send(list);
+  } catch (error) {
+    res.json({ error: error.message });
+  }
+});
+
+app.listen(PORT, function () {
+  console.log(`App listening at http://localhost:${PORT}`);
 });
