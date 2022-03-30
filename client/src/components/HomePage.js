@@ -4,6 +4,7 @@ import { Icon } from "@iconify/react";
 
 //component
 import Domain from "../Domain";
+import "../App.css";
 
 function HomePage() {
   const navigate = useNavigate();
@@ -21,20 +22,91 @@ function HomePage() {
     <>
       <button onClick={() => console.log(list, "list")}>add</button>
       {list.map((data) => (
-        <ul>
-          <li>{data.dream}</li>
-        </ul>
+        <>
+          <ul style={{ display: "flex", alignItems: "center" }}>
+            <li>
+              {data.dream_type === "Personal" ? (
+                <Icon
+                  icon="mdi:account"
+                  color="#89cbf0"
+                  style={{ fontSize: "50px" }}
+                />
+              ) : (
+                <Icon
+                  icon="ic:outline-business-center"
+                  color="#89cbf0"
+                  style={{ fontSize: "50px" }}
+                />
+              )}
+            </li>
+            <li>
+              <h2>{data.dream}</h2>
+            </li>
+          </ul>
+        </>
+        // <div
+        //   style={{
+        //     display: "flex",
+        //     alignItems: "center",
+        //     // justifyContent: "center",
+        //   }}
+        // >
+        //   <div style={{ flexGrow: "0.5" }}>
+        //     {data.dream_type === "Personal" ? (
+        //       <Icon
+        //         icon="mdi:account"
+        //         color="#89cbf0"
+        //         style={{ fontSize: "50px" }}
+        //       />
+        //     ) : (
+        //       <Icon
+        //         icon="ic:outline-business-center"
+        //         color="#89cbf0"
+        //         style={{ fontSize: "50px" }}
+        //       />
+        //     )}
+        //   </div>
+        //   <div style={{ flexGrow: "1" }}>
+        //     <h2>{data.dream}</h2>
+        //   </div>
+        //   {/* <ul>
+        //     {data.dream_type === "Personal" ? (
+        //       <div
+        //         style={{
+        //           borderRadius: "50px",
+        //           border: "1px solid lightgrey",
+        //         }}
+        //       >
+        //         <Icon
+        //           icon="mdi:account"
+        //           color="#89cbf0"
+        //           style={{ fontSize: "50px" }}
+        //         />
+        //       </div>
+        //     ) : (
+        //       <div
+        //         style={{
+        //           border: "1px solid lightgrey",
+        //           borderRadius: "50px",
+        //           marginLeft: "25px",
+        //         }}
+        //       >
+        //         {" "}
+        //         <Icon
+        //           icon="ic:outline-business-center"
+        //           color="#89cbf0"
+        //           style={{ fontSize: "50px" }}
+        //         />
+        //       </div>
+        //     )}
+        //     <li> </li>
+        //   </ul>
+        //   <ul>
+        //     <li>{data.dream}</li>
+        //   </ul> */}
+        // </div>
       ))}
 
-      <div style={{ display: "flex" }}>
-        <div>
-          <Icon icon="ic:outline-business-center" color="blue" />
-        </div>
-        <div>
-          <h1>Bike</h1>
-          <p>Date:2020</p>
-        </div>
-      </div>
       {/* <Icon /> */}
       <Icon
         icon="ri:add-circle-fill"
