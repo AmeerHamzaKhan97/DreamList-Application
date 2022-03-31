@@ -10,7 +10,7 @@ import AddNewItem from "./components/AddNewItem";
 function App() {
   return (
     <div className="App">
-      <h1>Welcome to React Router!</h1>
+      {/* <h1>Welcome to React Router!</h1> */}
       <Routes>
         <Route path="/login" element={<LoginForm />} />
         <Route path="/signup" element={<SignUp />} />

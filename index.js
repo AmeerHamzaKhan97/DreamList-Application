@@ -147,6 +147,15 @@ app.get("/api/v1/dreamlist", async (req, res) => {
   }
 });
 
+app.get("/api/v1/count", async (req, res) => {
+  try {
+    const countOf = await dreamModel.find({ dream_type: "Personal" }).count();
+    console.log("count", countOf);
+    res.json({ count: countOf });
+  } catch (error) {
+    res.json({ error: error.message });
+  }
+});
 app.listen(PORT, function () {
   console.log(`App listening at http://localhost:${PORT}`);
 });

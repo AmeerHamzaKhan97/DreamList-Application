@@ -1,3 +1,30 @@
 ul li {
   list-style: none;
 }
+
+.hero-image {
+  width: 100%;
+  opacity: 0.5;
+}
+
+.container-main {
+  position: relative;
+  /* text-align: center; */
+  color: white;
+}
+.main-center {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+}
+
+.main-text {
+  position: absolute;
+  bottom: 25px;
+  left: 16px;
+  opacity: 1;
+
+  display: flex;
+  flex-direction: column;
+}

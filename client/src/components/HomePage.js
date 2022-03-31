@@ -4,6 +4,7 @@ import { Icon } from "@iconify/react";
 
 //component
 import Domain from "../Domain";
+import HeroSection from "./HeroSection";
 import "../App.css";
 
 function HomePage() {
@@ -20,7 +21,8 @@ function HomePage() {
 
   return (
     <>
-      <button onClick={() => console.log(list, "list")}>add</button>
+      {/* <button onClick={() => console.log(list, "list")}>add</button> */}
+      <HeroSection />
       {list.map((data) => (
         <>
           <ul style={{ display: "flex", alignItems: "center" }}>
